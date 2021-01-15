@@ -1,0 +1,71 @@
+<script>
+// v: value, i: index, r: response, result, el: element, e: error
+// const arr = ['A', 'B', 'C'];
+// for(let i=0; i<arr.length; i++) {}
+// for(let i in arr) {}
+// for(let v of arr) {} // ES6
+// arr.forEach(function(v, i) {});
+
+const arr = ['A', 'B', 'C'];
+for(let i in arr) {
+	console.log(i);
+}
+for(let v of arr) {
+	console.log(v);
+}
+arr.forEach(function(v, i) {
+	console.log(i, v);
+});
+
+const arr2 = arr;	// soft copy
+arr2.push('D');
+console.log(arr, arr2);
+
+// deep copy
+// console.log(arr, arr2); [A, B, C] [A, B, C, D]
+
+const arr3 = arr.map(v => v);
+arr3.push('E');
+console.log(arr, arr3);
+
+const arr4 = arr.slice();
+arr4.push('E');
+console.log(arr, arr4);
+
+const arr5 = [].concat(arr);
+arr5.push('E');
+console.log(arr, arr5);
+
+// ES6 deep copy
+const arr6 = [...arr, 'E'];
+console.log(arr, arr6);
+
+console.clear();
+
+// rest연산자 활용
+
+// 함수의 인자
+function sum(a, b, c) {	// ES5
+	return (a || 0) + (b || 0) + (c || 0);
+}
+
+function sum2() {	// ES5
+	for(var i=0, sum=0; i<arguments.length; i++) {
+		sum += arguments[i] || 0;
+	}
+	return sum;
+}
+
+const arr7 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+console.log(	sum2(...arr7)	);
+
+// jQuery -> 함수(메서드)
+
+// 변수, 함수, 제어문(if, switch, while), 반복문
+// Window(이벤트, document ...), Object, Array, String, Number, Date, Math
+console.log(new Object());
+console.log(new Array());
+console.log(new String());
+console.log(new Number());
+console.log(new Date());
+</script>
