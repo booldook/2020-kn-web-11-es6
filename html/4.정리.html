@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title></title>
+	<script src="../js/lodash.min.js"></script>
+</head>
+<body>
+	<form action="" onsubmit="return hap(this);">
+		<input type="text" name="a">
+		<input type="text" name="b">
+		<textarea name="memo" cols="30" rows="10"></textarea>
+		<button>더하기</button>
+	</form>
+	<script>
+		function hap(f) {
+			console.log(Number.parseInt(f.a.value) + Number.parseInt(f.b.value));
+			console.log(Number(f.a.value) + Number(f.b.value));
+			var arr = f.memo.value.split('');
+			var html = arr.map(function(v) {
+				return v.charCodeAt(0) === 10 ? '<br>': v;
+			});
+			document.querySelector('body').innerHTML += html.join('');
+			
+			return false;
+		}
+
+		console.log( 0/0 );
+		const arr9 = [1, 10, -100, -10, 1000, 0];
+		console.log( Math.min(1, 10, -100, -10, 1000, 0) ); // ES5
+		console.log( Math.min(...arr9) ); //ES6
+		console.log( _.min(arr9) ); // Lodash 
+
+		// 1 ~ 10
+		// Math.random() // 0 ~ 0.9999999999
+		// console.log(Math.ceil(Math.random() * 11) - 1) // 0 ~ 9.9999 // 0 ~ 10
+
+		console.log(_.random(1, 10));
+
+		console.log(Math.abs(-10)); // 10
+
+		var str = "나의 이름은 \"홍길동\" 입니다. ";
+		console.log(str);
+
+		const arr10 = ['A', 'B', 'C'];
+		let html  = '<ul>';
+		html += '<li>'+arr10[0]+'</li>';
+		html += '<li>'+arr10[1]+'</li>';
+		html += '<li>'+arr10[2]+'</li>';
+		html += '</ul>';
+
+		// template string - ES6
+		let html2 = `
+			<ul>
+				<li class="">${arr10[0]}</li>
+				<li class=''>${arr10[1]}</li>
+				<li>${arr10[2]}</li>
+			</ul>
+		`;
+		console.log(html2);
+
+
+		var user = [
+			{name: '홍길동', age: 22},
+			{name: '홍길순', age: 12},
+			{name: '홍용만', age: 42},
+			{name: '홍삼룡', age: 32},
+			{name: '홍길이', age: 28},
+		];
+
+		// 1. 홍길 ?
+		var hongkil = user.filter(function(v) {
+			return v.name.indexOf('홍길') > -1;
+		});
+		console.log(hongkil);
+
+		var date = '2021-01-15 13:13:50';
+		var day = date.slice(8, 10);
+		console.log(day);
+		var day = date.substring(8, 10);
+		console.log(day);
+		var day = date.substr(8, 2);
+		console.log(day);
+
+		var cart = '1211001,2,xl,B';
+		var carts = cart.split(','); // return Array
+		console.log(carts);
+	</script>
+</body>
+</html>
