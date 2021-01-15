@@ -1,0 +1,39 @@
+<script>
+// 변수
+// var const(상수-변하지 않는 수) let(var를 대체)
+console.log(Math.PI);
+let a = 10;
+a = 20;
+a = 30;
+
+var b = 20;
+
+const arr = [];
+arr[0] = 1;
+arr[1] = 2;
+console.log(arr);
+
+const obj = {};
+obj.name = '홍길동';
+
+console.log(obj);
+
+for(var i=0; i<10; i++) {
+	
+}
+console.log(i);
+console.log(this);
+
+function abc() {
+	var c = 0;
+	console.log(a + b);
+}
+abc();
+
+console.log(c);
+
+for(let j=0; j<10; j++) {
+	console.log(j);
+}
+console.log(j);
+</script>

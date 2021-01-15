@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>var, let</title>
+</head>
+<body>
+	<ul>
+		<li>1번</li>
+		<li>2번</li>
+		<li>3번</li>
+		<li>4번</li>
+		<li>5번</li>
+	</ul>
+
+	<script>
+		//const lists = document.querySelector('ul>li'); // li[0]
+		const lists = document.querySelectorAll('ul>li');
+		console.log(lists);
+
+		for(let i=0; i<lists.length; i++) {
+			lists[i].addEventListener('click', function(e) {
+				alert(i);
+			});
+		}
+		// i == 5
+	</script>
+</body>
+</html>
