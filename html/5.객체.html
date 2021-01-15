@@ -1,0 +1,62 @@
+<script src="../js/jquery-3.5.1.min.js"></script>
+<script>
+	/**********  구조분해할당(비구조화할당)  **********/
+	const schools = ["화전초", "사양초", "예일초"];
+	const [hwajeon, , yeil] = schools;
+
+	console.log(hwajeon, yeil);
+
+	const obj = {
+		name: '홍길동',
+		age: 30,
+		height: 180
+	}
+	let { name } = obj;
+	let { name: my } = obj;
+	console.log(name, my);
+	
+	// openweathermap ->
+	// https://api.openweathermap.org/data/2.5/onecall?lat=38&lon=127&appid=02efdd64bdc14b279bc91d9247db4722&units=metric&exclude=minutely,hourly,current
+
+	const url = 'https://api.openweathermap.org/data/2.5/onecall';
+	const appid = '02efdd64bdc14b279bc91d9247db4722';
+	const units = 'metric';
+	const lat = 37;
+	const lon = 126;
+	const onGetWeather = r => {
+		console.log(r);
+		var { temp, feels_like: feel } = r.current;
+		console.log(temp, feel);
+	}
+	$.get(url, {appid, units, lat, lon}, onGetWeather);
+
+
+	/**********  함수 선언문/표현식  **********/
+	fn2();
+	const fn = function() {
+		console.log('함수표현식');
+	}
+	function fn2() {
+		console.log('함수선언문');
+	}
+
+	// ES6 함수표현식(Arrow Function)
+	// const fn3 = (x) => { return x * x }
+	const fn3 = x => x * x;
+	console.log( fn3(3) );
+
+	// ES5
+	/* const arr = [1, 2, 3, 4, 5];
+	const arr2 = arr.map(function(v){
+		return v * v;
+	});
+	console.log(arr2); */
+
+	// ES6
+	const arr = [5, 4, 3, 2, 1];
+	const arr2 = arr.map(v => v * v);
+	console.log(arr2);
+
+	arr.sort((a, b) => a - b);
+	console.log(arr);
+</script>
