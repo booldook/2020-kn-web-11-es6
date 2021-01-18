@@ -1,0 +1,56 @@
+<script>
+// 생성자(constructor) 객체 == 클래스
+function Sample() {
+	this.a = 10;
+	this.b = 20;
+	return this;
+}
+const sample = new Sample();
+console.log(sample);
+
+function Sample2(a, b) {
+	this.a = a;
+	this.b = b;
+	return this;
+}
+const sample2 = new Sample2(20, 30);
+console.log(sample2);
+const sample22 = new Sample2(50, 60);
+console.log(sample22);
+
+const arr = new Array();
+console.log(arr);
+
+// ES5 생성자 객체
+function Sample3(a, b) {
+	this.a = a;
+	this.b = b;
+	return this;
+}
+Sample3.prototype.sum = function(c) {
+	console.log(this.a + this.b + c);
+}
+Sample3.prototype.sub = function(c) {
+	console.log(this.a - this.b - c);
+}
+
+
+var sample3 = new Sample3(10, 20);
+sample3.sum(100);
+sample3.sub(100);
+
+//ES6 생성자객체 - Class
+class Sample4 {
+	constructor(a, b) {
+		this.a = a;
+		this.b = b;
+	}
+	fn() {
+		console.log(this.a + this.b);
+	}
+}
+
+const sample4 = new Sample4(10, 20);
+console.log(sample4);
+sample4.fn();
+</script>

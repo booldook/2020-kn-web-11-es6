@@ -1,98 +1,112 @@
-<script>
-/********** ES6 중점사항 ************/
-// 1. let, const - 중복선언을 막아준다.
-// 2. const fn = () => {}
-// 3. 구조분해할당(비 구조화 할당)
-// 4. rest operator, spread operator => ...
-// 5. String => includes, startsWith, EndsWith
-// 6. Set, Map
-// 7. Class
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		/********** ES6 중점사항 ************/
+		// 1. let, const - 중복선언을 막아준다.
+		// 2. const fn = () => {}
+		// 3. 구조분해할당(비 구조화 할당)
+		// 4. rest operator, spread operator => ...
+		// 5. String => includes, startsWith, EndsWith
+		// 6. Set, Map
+		// 7. Class
+		
+		// 3. 구조분해할당
+		const obj = {
+			a: 'A',
+			b: 'B',
+			fn: function() { 
+				console.log(this);
+				console.log(this.a + this.b);
+			}
+		}
+		
+		obj.fn();
+		var { a, b, fn } = obj;
+		console.log(this);
+		fn();
+		
+		const arr = [1, 2, 3];
+		let [a1, , b1] = arr;
+		console.log(a1, b1);
+		
+		// 4. 나머지연산자
+		function fn2() {
+			let str = '';
+			for(let i in arguments) {
+				str += arguments[i] + ' / ';
+			}
+			console.log(str);
+		}
+		const arr2 = ['A', 'B', 'C'];
+		const arr3 = ['D', 'E', 'F'];
+		fn2(...arr2);
+		
+		const arr4 = [...arr2, ...arr3];
+		console.log(arr4);
+		
+		//console.clear();
+		
+		// var obj = Object.entries(객체 or 배열);
+		const arr5 = ['A', 'B', 'C'];
+		const arr6 = Object.entries(arr5);
+		console.log(arr5, arr6);
+		
+		const obj2 = { a: 'A', b: 'B', c: 'C' };
+		const obj3 = Object.entries(obj2);
+		console.log(obj2, obj3);
+		
+		for(let [k, v] of obj3) {
+			console.log(k, v);
+		}
+		
+		//console.clear();
+		
+		// 6. Set - 객체를 중복없이 모아서 저장하고 싶을때
+		const set = new Set();
+		console.log(set);
+		
+		set.add('A');
+		set.add('B');
+		set.add('C');
+		set.add('D');
+		set.add('A');
+		set.add('B');
+		console.log(set);
+		
+		set.delete('A');
+		console.log( set.has('A') );
+		
+		// 7. Map - 데이터를 key, value 형태로 저장할 수 있다.
+		const map = new Map();
+		
+		map.set('a', 1);
+		map.set('b', 2);
+		map.set('c', 3);
+		
+		console.log(map);
+		console.log(map.get('a'));
+		console.log(map.get('b'));
+		
+		console.log( map.has('c') );
+		map.delete('c');
+		console.log( map.has('c') );
+		
+		console.log(map.entries());
+		console.log(map.keys());
+		console.log(map.values());
+		
+		
+		const arr7 = ['A', 'B'];
+		console.log(	Object.keys(arr7)	);
+		console.log(	Object.values(arr7)	);
+		console.log(	Object.entries(arr7)	);
+		</script>
+</body>
+</html>
 
-// 3. 구조분해할당
-const obj = {
-	a: 'A',
-	b: 'B',
-	fn: function() {
-		console.log('hi');
-	}
-}
-
-let { a, fn } = obj;
-fn();
-
-const arr = [1, 2, 3];
-let [a1, , b1] = arr;
-console.log(a1, b1);
-
-// 4. 나머지연산자
-function fn2() {
-	let str = '';
-	for(let i in arguments) {
-		str += arguments[i] + ' / ';
-	}
-	console.log(str);
-}
-const arr2 = ['A', 'B', 'C'];
-const arr3 = ['D', 'E', 'F'];
-fn2(...arr2);
-
-const arr4 = [...arr2, ...arr3];
-console.log(arr4);
-
-console.clear();
-
-// var obj = Object.entries(객체 or 배열);
-const arr5 = ['A', 'B', 'C'];
-const arr6 = Object.entries(arr5);
-console.log(arr5, arr6);
-
-const obj2 = { a: 'A', b: 'B', c: 'C' };
-const obj3 = Object.entries(obj2);
-console.log(obj2, obj3);
-
-for(let [k, v] of obj3) {
-	console.log(k, v);
-}
-
-console.clear();
-
-// 6. Set - 객체를 중복없이 모아서 저장하고 싶을때
-const set = new Set();
-console.log(set);
-
-set.add('A');
-set.add('B');
-set.add('C');
-set.add('D');
-set.add('A');
-set.add('B');
-console.log(set);
-
-set.delete('A');
-console.log( set.has('A') );
-
-// 7. Map - 데이터를 key, value 형태로 저장할 수 있다.
-const map = new Map();
-
-map.set('a', 1);
-map.set('b', 2);
-map.set('c', 3);
-
-console.log(map);
-console.log(map.get('a'));
-console.log(map.get('b'));
-
-console.log( map.has('c') );
-map.delete('c');
-console.log( map.has('c') );
-
-console.log(map.entries());
-console.log(map.keys());
-console.log(map.values());
-
-
-const arr7 = ['A', 'B'];
-console.log(	Object.keys(arr7)	);
-console.log(	Object.values(arr7)	);
-console.log(	Object.entries(arr7)	);
-</script>
